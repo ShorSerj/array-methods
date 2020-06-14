@@ -2,107 +2,44 @@ const textOld = document.querySelector('.textOld')
 const input = document.querySelector('#textUsers')
 const textNew = document.querySelector('.textNew')
 
-const buttonPush = document.querySelector('#push')
-const buttonPop = document.querySelector('#pop')
-const buttonShift = document.querySelector('#shift')
-const buttonUnshift = document.querySelector('#unshift')
-const buttonSplice = document.querySelector('#splice')
-const buttonSlice = document.querySelector('#slice')
-const buttonСoncat = document.querySelector('#concat')
-const buttonIndexOf = document.querySelector('#indexOf')
-const buttonIncludes = document.querySelector('#includes')
-const buttonFind = document.querySelector('#find')
-const buttonMap = document.querySelector('#map')
-const buttonSort = document.querySelector('#sort')
-const buttonReverse = document.querySelector('#reverse')
-const buttonFilter = document.querySelector('#filter')
-
+const methods = ['#push', '#pop', '#shift', '#unshift', '#splice', '#slice', '#concat', '#indexOf', '#includes', '#find', '#map', '#sort', '#reverse', '#filter']
 let lorem = ['арбуз', 'яблоко', 'грушка', 'виноград', 'чирешня', 'мармелад', 'шоколад', 'приники', 'чипсы']
+
+textNew.innerHTML = lorem
 textOld.innerHTML = 'Массив: ' + lorem
 
-buttonPush.addEventListener('click', function () {
-    const newElement = input.value
-    lorem.push(newElement)
-    textNew.innerHTML = lorem
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonPop.addEventListener('click', function () {
-    textNew.innerHTML = lorem.pop()
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonShift.addEventListener('click', function () {
-    textNew.innerHTML = lorem.shift()
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonUnshift.addEventListener('click', function () {
-    const newElement = input.value
-    lorem.unshift(newElement)
-    textNew.innerHTML = lorem
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonSplice.addEventListener('click', function () {
-    const newElement = input.value
-    lorem.splice(1, 3, newElement)
-    textNew.innerHTML = lorem
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonSlice.addEventListener('click', function () {
-    textNew.innerHTML = 'Новый массив: ' + lorem.slice(2, 5)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonСoncat.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Новый массив: ' + lorem.concat(newElement)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonIndexOf.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Индех элемента, если он есть: ' + lorem.indexOf(newElement)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonIncludes.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Проверяет наличие введенного слова в массиве: ' + lorem.includes(newElement)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonIncludes.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Проверяет наличие введенного слова в массиве: ' + lorem.includes(newElement)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonFind.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Проверяет наличие введенного слова в массиве: ' + lorem.find(item => item == newElement)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonFilter.addEventListener('click', function () {
-    const newElement = input.value
-    textNew.innerHTML = 'Фильтр на длину слов в массиве не менее 6 букв: ' + lorem.filter(item => item.length >= 6)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonMap.addEventListener('click', function () {
-    textNew.innerHTML = 'Выводит длину слов в массиве: ' + lorem.map(item => item.length)
-    textOld.innerHTML = 'Массив: ' + lorem
-})
-
-buttonSort.addEventListener('click', function () {
-    textOld.innerHTML = 'Массив: ' + lorem
-    textNew.innerHTML = 'Отсортировал массив: ' + lorem.sort()
-})
-
-buttonReverse.addEventListener('click', function () {
-    textOld.innerHTML = 'Массив: ' + lorem
-    textNew.innerHTML = 'Реверс массива: ' + lorem.reverse()
+methods.forEach(item => {
+    document.querySelector(item).addEventListener('click', function () {
+        const newElement = input.value
+        if (item === '#push') {
+            textNew.innerHTML = lorem.push(newElement)
+        } else if (item === '#pop') {
+            textNew.innerHTML = lorem.pop()
+        } else if (item === '#shift') {
+            textNew.innerHTML = lorem.shift()
+        } else if (item === '#unshift') {
+            textNew.innerHTML = lorem.unshift(newElement)
+        } else if (item === '#splice') {
+            textNew.innerHTML = lorem.splice(1, 3, newElement)
+        } else if (item === '#slice') {
+            textNew.innerHTML = 'Новый массив: ' + lorem.slice(2, 5)
+        } else if (item === '#concat') {
+            textNew.innerHTML = 'Новый массив: ' + lorem.concat(newElement)
+        } else if (item === '#indexOf') {
+            textNew.innerHTML = 'Индех элемента, если он есть: ' + lorem.indexOf(newElement)
+        } else if (item === '#includes') {
+            textNew.innerHTML = 'Проверяет наличие введенного слова в массиве: ' + lorem.includes(newElement)
+        } else if (item === '#find') {
+            textNew.innerHTML = 'Проверяет наличие введенного слова в массиве: ' + lorem.find(item => item == newElement)
+        } else if (item === '#map') {
+            textNew.innerHTML = 'Выводит длину слов в массиве: ' + lorem.map(item => item.length)
+        } else if (item === '#sort') {
+            textNew.innerHTML = 'Отсортировал массив: ' + lorem.sort()
+        } else if (item === '#reverse') {
+            textNew.innerHTML = 'Реверс массива: ' + lorem.reverse()
+        } else if (item === '#filter') {
+            textNew.innerHTML = 'Фильтр на длину слов в массиве не менее 6 букв: ' + lorem.filter(item => item.length >= 6)
+        }
+        textOld.innerHTML = 'Массив: ' + lorem
+    })
 })
