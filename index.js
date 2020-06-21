@@ -2,11 +2,14 @@ const textOld = document.querySelector('.textOld')
 const input = document.querySelector('#textUsers')
 const textNew = document.querySelector('.textNew')
 const mass = document.querySelector('form')
+const numberArr = document.querySelector('.numberArr')
 
 let lorem = ['арбуз', 'яблоко', 'грушка', 'виноград', 'чирешня', 'мармелад', 'шоколад', 'приники', 'чипсы']
+let arr = [1, 8, 7, 16, 32, 0, 1, 12, 7]
 
 textNew.innerHTML = lorem
 textOld.innerHTML = 'Массив: ' + lorem
+numberArr.innerHTML = 'Массив: ' + arr
 
 mass.addEventListener('click', function (e) {
     e.preventDefault()
@@ -39,6 +42,16 @@ mass.addEventListener('click', function (e) {
         textNew.innerHTML = 'Реверс массива: ' + lorem.reverse()
     } else if (e.target.id === 'filter') {
         textNew.innerHTML = 'Фильтр на длину слов в массиве не менее 6 букв: ' + lorem.filter(item => item.length >= 6)
+    } else if (e.target.id === 'reduce') {
+        let sum = (arr) => {
+            let m = 0
+            for (i = 0; i < arr.length; i++) {
+                let s = arr[i]
+                m = m + s
+            }
+            textNew.innerHTML = 'Складывает все элементы массива ' + m
+        }
+        sum(arr)
     }
     textOld.innerHTML = 'Массив: ' + lorem
 })
